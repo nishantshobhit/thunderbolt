@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>thunderbolt</name>
+    <groupId>to.talk.serverapps</groupId>
+    <artifactId>thunderbolt</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <compilerSourceVersion>1.7</compilerSourceVersion>
+        <sourceEncoding>UTF-8</sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${compilerSourceVersion}</source>
+                    <target>${compilerSourceVersion}</target>
+                    <encoding>${sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--Test dependencies-->
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+        </dependency>
+        <dependency>
+          <groupId>org.easymock</groupId>
+          <artifactId>easymock</artifactId>
+          <version>3.2</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+	    <id>directi.maven.thirdparty</id>
+            <name>DirectI Thirdparty Repository</name>
+            <url>http://172.16.142.176:9999/nexus/content/repositories/thirdparty</url>
+        </repository>
+        <repository>
+            <id>directi.maven.releases</id>
+            <name>DirectI Internal Releases Repository</name>
+            <url>http://172.16.142.176:9999/nexus/content/repositories/releases</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>    
+        <repository>
+            <id>directi.maven.snapshots</id>
+            <name>DirectI Internal Releases Repository</name>
+            <url>http://172.16.142.176:9999/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>directi.maven.snapshots</id>
+            <name>DirectI Internal Snapshot Repository</name>
+            <url>http://172.16.142.176:9999/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
