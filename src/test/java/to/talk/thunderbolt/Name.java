@@ -11,7 +11,11 @@ public class Name {
         MR,
         MS
     }
-    
+
+    public Name() {}
+
+    public Name(String arg) {}
+
     public Title getTitle() {
         return title;
     }

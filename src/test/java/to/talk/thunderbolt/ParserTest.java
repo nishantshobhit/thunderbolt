@@ -1,20 +1,18 @@
 package to.talk.thunderbolt;
 
 import java.io.InputStream;
-
 import org.junit.Assert;
-
 import org.junit.Test;
 
 import to.talk.thunderbolt.Name.Title;
 
 public class ParserTest {
 
-    private Parser parser = new Parser();
+    private StreamingParser parser = new StreamingParser();
     
     @Test
     public void test_1() {
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("to/talk/thunderbolt/CreateProfileRequest.xml");
+        InputStream stream = getClass().getClassLoader().getResourceAsStream("CreateProfileRequest.xml");
         CreateProfileRequest req = 
                 parser.parse(stream, CreateProfileRequest.class);
         Assert.assertEquals(1000, req.getId());
@@ -23,6 +21,6 @@ public class ParserTest {
         Assert.assertEquals(Title.MR, req.getName().getTitle());
         Assert.assertEquals("Nishant", req.getName().getFirstName());
         Assert.assertEquals("S", req.getName().getLastName());
+        Assert.assertTrue(req.isVerify());
     }
-    
 }

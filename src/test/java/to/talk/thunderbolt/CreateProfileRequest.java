@@ -5,8 +5,12 @@ public class CreateProfileRequest {
     int id;
     float version;
     Name name;
-    Boolean verify;
-    
+    boolean verify;
+
+    public CreateProfileRequest() {}
+
+    public CreateProfileRequest(String arg) {}
+
     public int getId() {
         return id;
     }
@@ -25,10 +29,10 @@ public class CreateProfileRequest {
     public void setName(Name name) {
         this.name = name;
     }
-    public Boolean getVerify() {
+    public boolean isVerify() {
         return verify;
     }
-    public void setVerify(Boolean verify) {
+    public void setVerify(boolean verify) {
         this.verify = verify;
     }
 }
