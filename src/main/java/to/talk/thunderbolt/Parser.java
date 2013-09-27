@@ -3,12 +3,15 @@ package to.talk.thunderbolt;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 public class Parser {
@@ -31,23 +34,32 @@ public class Parser {
             Stack<Object> stack = new Stack<Object>();
             while (r.hasNext()) {
                 XMLEvent e = r.nextEvent();
+                System.out.println(e);
                 if (e.isStartElement()) {
                     if (stack.isEmpty()) {
                         stack.push(getObject(clazz.getName()));
-                        continue;
-                    }
-                    XMLEvent nextEvent = r.peek();
-                    Object instance = stack.peek();
-                    if (nextEvent.isCharacters() || nextEvent.isEndElement()) {
-                        // simple type
-                        String content = (nextEvent.isCharacters()) ? getCharacters(r) : null;
-                        setProperty(instance, "set" + camelCase(getStartTagName(e), true), content);
                     } else {
-                        // complex type
-                        String classname = camelCase(getStartTagName(e), true);
-                        Object obj = getObject(packageName + "." + classname);
-                        setProperty(instance, "set" + classname, obj);
-                        stack.push(obj);
+                        XMLEvent nextEvent = r.peek();
+                        Object instance = stack.peek();
+                        if (nextEvent.isCharacters() || nextEvent.isEndElement()) {
+                            // simple type
+                            String content = (nextEvent.isCharacters()) ? getCharacters(r) : null;
+                            setProperty(instance, "set" + camelCase(getStartTagName(e), true), content);
+                        } else {
+                            // complex type
+                            String classname = camelCase(getStartTagName(e), true);
+                            Object obj = getObject(packageName + "." + classname);
+                            setProperty(instance, "set" + classname, obj);
+                            stack.push(obj);
+                        }
+                    }
+                    // attributes
+                    Object instance = stack.peek();
+                    StartElement startEl = e.asStartElement();
+                    Iterator<Attribute> attrIterator = startEl.getAttributes();
+                    while (attrIterator.hasNext()) {
+                        Attribute attr = attrIterator.next();
+                        setProperty(instance, "set" + camelCase(attr.getName().getLocalPart(), true), attr.getValue()); 
                     }
                 } else if (e.isEndElement()) {
                     String classname = camelCase(getEndTagName(e), true);
@@ -59,7 +71,7 @@ public class Parser {
             }
             return (T) stack.pop();
         } catch (XMLStreamException ex) {
-            throw new RuntimeException(ex);
+            throw new HailStormException(ex);
         }
     }
 
@@ -92,21 +104,23 @@ public class Parser {
             Object instance = clazz.newInstance();
             return instance;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new HailStormException(e);
         }
     }
 
     private void setProperty(Object instance, String setterName, Object arg) {
         Method setterMethod = MethodUtils.propertySetter(instance, setterName);
         Method getterMethod = MethodUtils.propertyGetter(instance, setterName);
-        try {
-            if (arg instanceof String) {
-                setterMethod.invoke(instance, cast((String)arg, getterMethod.getReturnType()));
-            } else {
-                setterMethod.invoke(instance, arg);
+        if (setterMethod != null && getterMethod != null) {
+            try {
+                if (arg instanceof String) {
+                    setterMethod.invoke(instance, cast((String)arg, getterMethod.getReturnType()));
+                } else {
+                    setterMethod.invoke(instance, arg);
+                }
+            } catch (Exception cause) {
+                throw new HailStormException(cause);
             }
-        } catch (Exception cause) {
-            throw new HailStormException(cause);
         }
     }
 
@@ -154,11 +168,21 @@ public class Parser {
         });
     }
 
+    @SuppressWarnings("unchecked")
     private Object cast(String arg, Class<?> returnType) {
         if (arg == null && !returnType.getName().equals("boolean")) {
             return arg;
         }
         Cast casted = castMap.get(returnType.getName());
-        return (casted == null) ? arg : casted.doCast(arg);
+        if (casted == null) {
+            if (returnType.isEnum()) {
+                return Enum.valueOf(returnType.asSubclass(Enum.class), (String)arg);
+            } else {
+                // string otherwise
+                return arg;
+            }
+        } else {
+            return casted.doCast(arg);
+        }
     }
 }

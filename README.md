@@ -8,8 +8,7 @@ TODO
 
 * Support attributes
 * For now, elements should not contain both text and child elements. Get rid of this restriction
-* Support enums, collections, arrays
+* Support collections, arrays
 * Benchmark with the woodstox parser
-* Better error handling
 * Open content
 * Experiment with dynamic proxies than beans
