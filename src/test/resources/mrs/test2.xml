@@ -1,0 +1,20 @@
+<iq id="cdsfewf" to="me@meta.talk.to" type="set">
+    <meta-contact xmlns="http://talk.to/extension#mr" mr-version="1" mr-id="abc">
+        <contact from="john@fb.com~fb" to="me@fb.com~fb" subscription="from">
+            <vCard xmlns="vcard-temp">
+                <FN>Colin Hawkins</FN>
+                <TEL>
+                    <CELL/><NUMBER>+91-9999999999</NUMBER>
+                </TEL>
+                <TEL>
+                    <NUMBER>+91-4424893659</NUMBER>
+                </TEL>
+                <PHOTO>
+                    <EXTVAL>http://i.talk.to/1463681549382478999.jpg</EXTVAL>
+                </PHOTO>
+                <UID>8e07db20dcee98a026a178aea49e2b9289cbbb42</UID>
+            </vCard>
+            <verified-mobile/>
+        </contact>
+    </meta-contact>
+</iq>

@@ -6,6 +6,7 @@ public class Name {
     Title title;
     String firstName;
     String lastName;
+    Password password;
     
     public enum Title {
         MR,
@@ -39,5 +40,13 @@ public class Name {
     }
     public void setCharset(String charset) {
         this.charset = charset;
+    }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
     }    
 }

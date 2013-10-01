@@ -22,7 +22,7 @@ public class StreamingParser {
 
     public StreamingParser() {
         xmlif = XMLInputFactory.newInstance();
-        xmlif.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES, Boolean.TRUE);
+        xmlif.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES, Boolean.FALSE);
         xmlif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);
         xmlif.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
     }
@@ -34,12 +34,13 @@ public class StreamingParser {
             XMLEventReader r;
             r = xmlif.createXMLEventReader(is);
             Stack<Object> stack = new Stack<>();
+            Object parsedObject = null;
             while (r.hasNext()) {
                 XMLEvent e = r.nextEvent();
                 if (e.isStartElement()) {
                     // the top level element corresponds to the supplied class
                     if (stack.isEmpty()) {
-                        Object obj = getObject(clazz.getName());
+                        Object obj = instantiate(clazz.getName());
                         setAttributes(obj, e);
                         stack.push(obj);
                     } else {
@@ -47,28 +48,30 @@ public class StreamingParser {
                         Method getter = MethodUtils.propertyGetter(stack.peek(), property);
                         if (getter == null) continue; // ignore elements which do not have getters/setters
 
+                        Object value = null, instance = stack.peek();
                         if (isSimpleType(getter.getReturnType())) {
-                            setProperty(stack.peek(), property, getCharacters(r));
+                            value = toSimpleType(getCharacters(r), getter.getReturnType());
                         } else {
                             String content = null;
                             if (r.peek().isCharacters()) {
                                 content = getCharacters(r);
                             }
-                            String className = StringUtils.capitalize(property);
-                            Object obj = getObject(packageName + '.' + className, content);
-                            setAttributes(obj, e);
-                            setProperty(stack.peek(), property, obj);
-                            stack.push(obj);
+                            // create the object and set attributes
+                            value = instantiate(packageName + '.' + StringUtils.capitalize(property), content);
+                            setAttributes(value, e);
+                            stack.push(value);
                         }
+                        // link to the parent
+                        setProperty(instance, property, value);
                     }
                 } else if (e.isEndElement()) {
                     String className = camelCase(e.asEndElement().getName().getLocalPart(), true);
                     if (stack.peek().getClass().getSimpleName().equals(className)) {
-                        stack.pop();
+                        parsedObject = stack.pop();
                     }
                 }
             }
-            return (T) stack.pop();
+            return (T) parsedObject;
         } catch (XMLStreamException ex) {
             throw new HailStormException(ex);
         }
@@ -83,62 +86,63 @@ public class StreamingParser {
         }
     }
 
+    // example : create-profile-full -> createProfileFull if capitalize is false
     private String camelCase(String str, boolean capitalize) {
         String[] parts = str.split("-");
-        String ret = (capitalize) ? StringUtils.capitalize(parts[0]) : parts[0];
-        return (parts.length > 1) ? ret + StringUtils.capitalize(parts[1]) : ret;
-    }
-
-    private Object getObject(String className) {
-        try {
-            Class<?> clazz = Class.forName(className);
-            return clazz.newInstance();
-        } catch (Exception e) {
-            throw new HailStormException(e);
+        StringBuilder sb = new StringBuilder();
+        sb.append(parts[0]);
+        for (int i=1; i< parts.length; i++) {
+            sb.append(StringUtils.capitalize(parts[i]));
         }
+        return (capitalize) ? StringUtils.capitalize(sb.toString()) : sb.toString();
     }
 
-    private Object getObject(String className, String content) {
+    private Object instantiate(String className, Object... args) {
         try {
             Class<?> clazz = Class.forName(className);
-            Constructor<?> cons = clazz.getDeclaredConstructor(String.class);
-            if (cons != null) {
-                return cons.newInstance(content);
-            } else {
+            if (args == null || args.length == 0) {
+                // no args, invoke the default cons
                 return clazz.newInstance();
+            } else {
+                Class<?>[] argTypes = new Class<?>[args.length];
+                int i = 0;
+                for (Object obj : args) {
+                    argTypes[i++] = obj.getClass();
+                }
+                try {
+                    Constructor<?> cons = clazz.getDeclaredConstructor(argTypes);
+                    return cons.newInstance(args);
+                } catch (NoSuchMethodException exception) {
+                    return clazz.newInstance();
+                }
             }
-        } catch (Exception e) {
-            throw new HailStormException(e);
+        } catch (Exception cause) {
+            throw new HailStormException(cause);
         }
     }
 
     @SuppressWarnings("unchecked")
-    private void setAttributes(Object obj, XMLEvent e) {
+    private void setAttributes(Object instance, XMLEvent e) {
         StartElement startEl = e.asStartElement();
         Iterator<Attribute> attrIterator = startEl.getAttributes();
         while (attrIterator.hasNext()) {
             Attribute attr = attrIterator.next();
-            setProperty(obj, camelCase(attr.getName().getLocalPart(), false), attr.getValue());
+            String property = camelCase(attr.getName().getLocalPart(), false);            
+            Method getter = MethodUtils.propertyGetter(instance, property);
+            if (getter != null) {
+                Object value = toSimpleType(attr.getValue(), getter.getReturnType());
+                setProperty(instance, property, value);
+            }
         }
     }
 
+    // invokes instance.setPropertyName(arg)
     private void setProperty(Object instance, String propertyName, Object arg) {
         Method setterMethod = MethodUtils.propertySetter(instance, propertyName);
         Method getterMethod = MethodUtils.propertyGetter(instance, propertyName);
         if (setterMethod != null && getterMethod != null) {
             try {
-                if (arg != null) {
-                    if (arg instanceof String) {
-                        setterMethod.invoke(instance, toSimpleType((String)arg, getterMethod.getReturnType()));
-                    } else {
-                        setterMethod.invoke(instance, arg);
-                    }
-                } else {
-                    // exception for boolean where the presence of an element without content means true
-                    if (getterMethod.getReturnType().getName().equals("boolean")) {
-                        setterMethod.invoke(instance, Boolean.TRUE);
-                    }
-                }
+                setterMethod.invoke(instance, arg);
             } catch (Exception cause) {
                 throw new HailStormException(cause);
             }
@@ -184,7 +188,7 @@ public class StreamingParser {
         primitivesMap.put("boolean", new Cast() {
             @Override
             public Object doCast(String arg) {
-                return Boolean.valueOf(arg);
+                return (arg == null) ? Boolean.TRUE : Boolean.valueOf(arg);
             }
         });
         primitivesMap.put("char", new Cast() {
@@ -196,19 +200,23 @@ public class StreamingParser {
     }
 
     // java primitives, strings and enums
-    private boolean isSimpleType(Class<?> returnType) {
-        return primitivesMap.containsKey(returnType.getName()) || returnType.isAssignableFrom(String.class)
-                || returnType.isEnum();
+    private boolean isSimpleType(Class<?> type) {
+        return primitivesMap.containsKey(type.getName()) || type.isAssignableFrom(String.class)
+                || type.isEnum();
     }
 
 
     @SuppressWarnings("unchecked")
-    private Object toSimpleType(String arg, Class<?> returnType) {
-        // fix enums first
-        if (returnType.isEnum()) {
-            return Enum.valueOf(returnType.asSubclass(Enum.class), arg);
+    private Object toSimpleType(String arg, Class<?> type) {
+        if (!isSimpleType(type)) {
+            throw new HailStormException("not a simple type " + type);
         }
-        Cast casted = primitivesMap.get(returnType.getName());
+        // fix enums first
+        if (type.isEnum()) {
+            return Enum.valueOf(type.asSubclass(Enum.class), arg);
+        }
+        // strings and java primitives
+        Cast casted = primitivesMap.get(type.getName());
         return (casted == null) ? arg : casted.doCast(arg);
     }
 }

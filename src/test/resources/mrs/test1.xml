@@ -1,0 +1,5 @@
+<iq type="get" id="iq_id1" to="guid@meta.talk.to~mc/resource" >
+  <get-contacts xmlns="http://talk.to/extension#mr" format="micro" limit="10">
+    <mr-version>1</mr-version>
+  </get-contacts>
+</iq>
