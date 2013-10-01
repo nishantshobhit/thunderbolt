@@ -1,13 +1,10 @@
 package to.talk.thunderbolt.mrs;
 
-public class Iq {
+public abstract class Iq {
     
     String type;
     String id;
     String to;
-    
-    GetContacts getContacts;
-    MetaContact metaContact;
     
     public String getType() {
         return type;
@@ -26,18 +23,6 @@ public class Iq {
     }
     public void setTo(String to) {
         this.to = to;
-    }
-    public GetContacts getGetContacts() {
-        return getContacts;
-    }
-    public void setGetContacts(GetContacts getContacts) {
-        this.getContacts = getContacts;
-    }
-    public MetaContact getMetaContact() {
-        return metaContact;
-    }
-    public void setMetaContact(MetaContact metaContact) {
-        this.metaContact = metaContact;
     }
     
 }

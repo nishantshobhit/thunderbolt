@@ -16,11 +16,11 @@ public class MrsTest {
     
     @Test
     public void test_1() {
-        parser.parse(getResource(1), Iq.class);
+        GetContactsIq iq = parser.parse(getResource(1), GetContactsIq.class);
     }
     
     @Test
     public void test_2() {
-        Iq iq = parser.parse(getResource(2), Iq.class);
+        MetaContactIq iq = parser.parse(getResource(2), MetaContactIq.class);
     }
 }
