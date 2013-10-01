@@ -66,12 +66,13 @@ public class StreamingParser {
                     }
                 } else if (e.isEndElement()) {
                     String className = camelCase(e.asEndElement().getName().getLocalPart(), true);
-                    if (stack.peek().getClass().getSimpleName().equals(className)) {
+                    Class<?> topOfStack = stack.peek().getClass();
+                    if (className.equals(topOfStack.getSimpleName())) { 
                         parsedObject = stack.pop();
                     }
                 }
             }
-            return (T) parsedObject;
+            return (stack.isEmpty()) ? (T) parsedObject : (T) stack.pop();
         } catch (XMLStreamException ex) {
             throw new HailStormException(ex);
         }

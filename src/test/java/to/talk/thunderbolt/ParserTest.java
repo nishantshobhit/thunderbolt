@@ -71,4 +71,10 @@ public class ParserTest {
         Assert.assertFalse(req.getName().getPassword().isEncrypt());
         Assert.assertEquals("foobar", req.getName().getPassword().getPassword());
     }
+    
+    @Test
+    public void test_6() {
+        GetProfileRequest req = parser.parse(getResource(6), GetProfileRequest.class);
+        Assert.assertEquals(5, req.getIds().size());
+    }
 }
