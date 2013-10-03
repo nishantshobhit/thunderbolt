@@ -5,7 +5,11 @@ public class Password {
     boolean encrypt;
     String password;
     
-    public Password(String password) {
+    public Password() {
+        
+    }
+    
+    public void setValue(String password) {
         this.password = password;
     }
 

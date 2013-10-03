@@ -17,9 +17,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.esotericsoftware.reflectasm</groupId>
+            <artifactId>reflectasm</artifactId>
+            <version>1.07</version>
+        </dependency>            
+        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
           <groupId>junit</groupId>
@@ -83,7 +94,7 @@
 
     <repositories>
         <repository>
-	    <id>directi.maven.thirdparty</id>
+            <id>directi.maven.thirdparty</id>
             <name>DirectI Thirdparty Repository</name>
             <url>http://172.16.142.176:9999/nexus/content/repositories/thirdparty</url>
         </repository>

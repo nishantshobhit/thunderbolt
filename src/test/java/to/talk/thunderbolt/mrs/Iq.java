@@ -5,6 +5,7 @@ public abstract class Iq {
     String type;
     String id;
     String to;
+    String from;
     
     public String getType() {
         return type;
@@ -23,6 +24,12 @@ public abstract class Iq {
     }
     public void setTo(String to) {
         this.to = to;
+    }
+    public String getFrom() { 
+        return this.from;
+    }
+    public void setFrom(String from) {
+        this.from = from;
     }
     
 }

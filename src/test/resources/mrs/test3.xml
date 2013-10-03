@@ -1,0 +1,782 @@
+<iq type="set" id="iq_id" from="john.doe@talk.to~tt/Resource">
+  <add-contacts xmlns="http://talk.to/extension#mr">
+    <user-data>
+      <TEL><COUNTRY-CODE>91</COUNTRY-CODE></TEL>
+    </user-data>
+    <add-contact jid="iphone_id1">
+      <vCard xmlns='vcard-temp'>
+        <TEL><LABEL>Some Label</LABEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>John Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id1">
+      <vCard xmlns='vcard-temp'>
+        <TEL><LABEL>Some Label</LABEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>John Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id1">
+      <vCard xmlns='vcard-temp'>
+        <TEL><LABEL>Some Label</LABEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>John Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id1">
+      <vCard xmlns='vcard-temp'>
+        <TEL><LABEL>Some Label</LABEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>John Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id1">
+      <vCard xmlns='vcard-temp'>
+        <TEL><LABEL>Some Label</LABEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>John Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+
+    <add-contact jid="iphone_id2">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Jane Doe</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+    <add-contact jid="iphone_id3">
+      <vCard xmlns='vcard-temp'>
+        <TEL><NUMBER>+91-9876543210</NUMBER></TEL>
+        <FN>Foo Bar</FN>
+      </vCard>
+    </add-contact>
+  </add-contacts>
+</iq>

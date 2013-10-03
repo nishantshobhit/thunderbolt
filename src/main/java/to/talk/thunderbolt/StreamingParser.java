@@ -9,8 +9,6 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,8 +29,7 @@ public class StreamingParser {
     public <T> T parse(InputStream is, Class<T> clazz) throws HailStormException {
         String packageName = clazz.getPackage().getName();
         try {
-            XMLEventReader r;
-            r = xmlif.createXMLEventReader(is);
+            XMLEventReader r = xmlif.createXMLEventReader(is);
             Stack<Object> stack = new Stack<>();
             Object parsedObject = null;
             while (r.hasNext()) {
@@ -40,29 +37,34 @@ public class StreamingParser {
                 if (e.isStartElement()) {
                     // the top level element corresponds to the supplied class
                     if (stack.isEmpty()) {
-                        Object obj = instantiate(clazz.getName());
+                        T obj = (T) ReflectionUtils.newInstance(clazz.getName());
                         setAttributes(obj, e);
                         stack.push(obj);
                     } else {
+                        
                         String property = camelCase(e.asStartElement().getName().getLocalPart(), false);
-                        Method getter = MethodUtils.propertyGetter(stack.peek(), property);
-                        if (getter == null) continue; // ignore elements which do not have getters/setters
+                        Mutator mutator = ReflectionUtils.mutator(stack.peek().getClass(), property);
+                        
+                        // ignore elements which do not have getters/setters
+                        if (mutator == null) continue;
 
                         Object value = null, instance = stack.peek();
-                        if (isSimpleType(getter.getReturnType())) {
-                            value = toSimpleType(getCharacters(r), getter.getReturnType());
+                        if (isSimpleType(mutator.getType())) {
+                            value = toSimpleType(getCharacters(r), mutator.getType());
                         } else {
-                            String content = null;
+                            value = ReflectionUtils.newInstance(packageName + '.' + StringUtils.capitalize(property));
                             if (r.peek().isCharacters()) {
-                                content = getCharacters(r);
+                                Mutator m = ReflectionUtils.mutator(value.getClass(), "value");
+                                if (m != null) {
+                                    m.invoke(value, getCharacters(r));
+                                }
                             }
                             // create the object and set attributes
-                            value = instantiate(packageName + '.' + StringUtils.capitalize(property), content);
                             setAttributes(value, e);
                             stack.push(value);
                         }
                         // link to the parent
-                        setProperty(instance, property, value);
+                        mutator.invoke(instance, value);
                     }
                 } else if (e.isEndElement()) {
                     String className = camelCase(e.asEndElement().getName().getLocalPart(), true);
@@ -79,12 +81,12 @@ public class StreamingParser {
     }
 
     private String getCharacters(XMLEventReader rdr) throws XMLStreamException {
+        String str = null;
         XMLEvent e = rdr.nextEvent();
         if (e.isCharacters()) {
-            return e.asCharacters().getData(); 
-        } else {
-            return null;
+            str = e.asCharacters().getData(); 
         }
+        return str;
     }
 
     // example : create-profile-full -> createProfileFull if capitalize is false
@@ -97,59 +99,22 @@ public class StreamingParser {
         }
         return (capitalize) ? StringUtils.capitalize(sb.toString()) : sb.toString();
     }
-
-    private Object instantiate(String className, Object... args) {
-        try {
-            Class<?> clazz = Class.forName(className);
-            if (args == null || args.length == 0) {
-                // no args, invoke the default cons
-                return clazz.newInstance();
-            } else {
-                Class<?>[] argTypes = new Class<?>[args.length];
-                int i = 0;
-                for (Object obj : args) {
-                    argTypes[i++] = obj.getClass();
-                }
-                try {
-                    Constructor<?> cons = clazz.getDeclaredConstructor(argTypes);
-                    return cons.newInstance(args);
-                } catch (NoSuchMethodException exception) {
-                    return clazz.newInstance();
-                }
-            }
-        } catch (Exception cause) {
-            throw new HailStormException(cause);
-        }
-    }
-
+    
     @SuppressWarnings("unchecked")
     private void setAttributes(Object instance, XMLEvent e) {
         StartElement startEl = e.asStartElement();
         Iterator<Attribute> attrIterator = startEl.getAttributes();
         while (attrIterator.hasNext()) {
             Attribute attr = attrIterator.next();
-            String property = camelCase(attr.getName().getLocalPart(), false);            
-            Method getter = MethodUtils.propertyGetter(instance, property);
-            if (getter != null) {
-                Object value = toSimpleType(attr.getValue(), getter.getReturnType());
-                setProperty(instance, property, value);
+            String property = camelCase(attr.getName().getLocalPart(), false);
+            Mutator mutator = ReflectionUtils.mutator(instance.getClass(), property);
+            if (mutator != null) {
+                Object value = toSimpleType(attr.getValue(), mutator.getType());
+                mutator.invoke(instance, value);
             }
         }
     }
-
-    // invokes instance.setPropertyName(arg)
-    private void setProperty(Object instance, String propertyName, Object arg) {
-        Method setterMethod = MethodUtils.propertySetter(instance, propertyName);
-        Method getterMethod = MethodUtils.propertyGetter(instance, propertyName);
-        if (setterMethod != null && getterMethod != null) {
-            try {
-                setterMethod.invoke(instance, arg);
-            } catch (Exception cause) {
-                throw new HailStormException(cause);
-            }
-        }
-    }
-
+    
     private interface Cast {
         Object doCast(String arg);
     }
