@@ -10,50 +10,34 @@ import com.esotericsoftware.reflectasm.MethodAccess;
 
 public class ReflectionUtils {
     
-    private static Map<String, ConstructorAccess<?>> caCache = new HashMap<>();
+    private static Map<Class<?>, ConstructorAccess<?>> caCache = new HashMap<>();
     private static Map<Class<?>, MethodAccess> maCache = new HashMap<>();
+    
+    // WARNING: this cache is capable of producing a memory leak
     private static Map<String, Mutator> mutatorCache = new HashMap<>();
     
-    public static Object newInstance(String className) {
-        ConstructorAccess<?> consAccess = getConsAccess(className);
-        return consAccess.newInstance();
+    public static Object newInstance(Class<?> clazz) {
+        if (!caCache.containsKey(clazz)) {
+            ConstructorAccess<?> consAccess = ConstructorAccess.get(clazz);
+            caCache.put(clazz, consAccess);
+        }
+        return caCache.get(clazz).newInstance();
     }
     
     public static Mutator mutator(Class<?> clazz, String property) {
-        if (!mutatorCache.containsKey(getKey(clazz, property))) {
+        String key = clazz.getName() + ":" + property;
+        if (!mutatorCache.containsKey(key)) {
             MethodAccess mAccess = getMethodAccess(clazz);
             String capitalizedProperty = StringUtils.capitalize(property);
             int index = -100;
             try {
                 index = mAccess.getIndex("set" + capitalizedProperty);
             } catch (IllegalArgumentException cause) {
-                try {
-                    index = mAccess.getIndex("is" + capitalizedProperty);
-                } catch (IllegalArgumentException innerCause) {
-                    // no setter found
-                }
+                // no setter found
             }
-            mutatorCache.put(getKey(clazz, property), (index == -100) ? null : new Mutator(mAccess, index));
+            mutatorCache.put(key, (index == -100) ? null : new Mutator(mAccess, index));
         }
-        return mutatorCache.get(getKey(clazz, property));
-    }
-    
-    private static String getKey(Class<?> clazz, String property) {
-        return clazz.getName() + ":" + property;
-    }
-    
-    private static ConstructorAccess<?> getConsAccess(String className) {
-        if (!caCache.containsKey(className)) {
-            Class<?> clazz = null;
-            try {
-                clazz = Class.forName(className);
-            } catch (ClassNotFoundException cause) {
-                throw new HailStormException(cause);
-            }
-            ConstructorAccess<?> consAccess = ConstructorAccess.get(clazz);
-            caCache.put(className, consAccess);
-        }
-        return caCache.get(className);
+        return mutatorCache.get(key);
     }
     
     private static MethodAccess getMethodAccess(Class<?> clazz) {

@@ -27,7 +27,6 @@ public class StreamingParser {
 
     @SuppressWarnings("unchecked")
     public <T> T parse(InputStream is, Class<T> clazz) throws HailStormException {
-        String packageName = clazz.getPackage().getName();
         try {
             XMLEventReader r = xmlif.createXMLEventReader(is);
             Stack<Object> stack = new Stack<>();
@@ -37,7 +36,7 @@ public class StreamingParser {
                 if (e.isStartElement()) {
                     // the top level element corresponds to the supplied class
                     if (stack.isEmpty()) {
-                        T obj = (T) ReflectionUtils.newInstance(clazz.getName());
+                        T obj = (T) ReflectionUtils.newInstance(clazz);
                         setAttributes(obj, e);
                         stack.push(obj);
                     } else {
@@ -52,7 +51,7 @@ public class StreamingParser {
                         if (isSimpleType(mutator.getType())) {
                             value = toSimpleType(getCharacters(r), mutator.getType());
                         } else {
-                            value = ReflectionUtils.newInstance(packageName + '.' + StringUtils.capitalize(property));
+                            value = ReflectionUtils.newInstance(mutator.getType());
                             if (r.peek().isCharacters()) {
                                 Mutator m = ReflectionUtils.mutator(value.getClass(), "value");
                                 if (m != null) {
