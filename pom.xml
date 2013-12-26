@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>thunderbolt</name>
-    <groupId>to.talk.serverapps</groupId>
+    <groupId>olympus</groupId>
     <artifactId>thunderbolt</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <compilerSourceVersion>1.7</compilerSourceVersion>
@@ -20,7 +20,7 @@
             <groupId>com.esotericsoftware.reflectasm</groupId>
             <artifactId>reflectasm</artifactId>
             <version>1.07</version>
-        </dependency>            
+        </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
@@ -45,11 +45,13 @@
           <scope>test</scope>
         </dependency>
     </dependencies>
-   
+
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>${compilerSourceVersion}</source>
                     <target>${compilerSourceVersion}</target>
@@ -59,6 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -77,11 +80,12 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
+                    <check/>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-   
+
     <reporting>
         <plugins>
             <plugin>
@@ -94,27 +98,27 @@
 
     <repositories>
         <repository>
-            <id>directi.maven.thirdparty</id>
-            <name>DirectI Thirdparty Repository</name>
-            <url>http://172.16.142.176:9999/nexus/content/repositories/thirdparty</url>
+            <id>talkto.maven.central</id>
+            <name>Talk.to Central Repository</name>
+            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/central/</url>
         </repository>
         <repository>
-            <id>directi.maven.releases</id>
-            <name>DirectI Internal Releases Repository</name>
-            <url>http://172.16.142.176:9999/nexus/content/repositories/releases</url>
+            <id>talkto.maven.releases</id>
+            <name>Talk.to Releases Repository</name>
+            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
 
-    <distributionManagement>    
+    <distributionManagement>
         <repository>
-            <id>directi.maven.snapshots</id>
-            <name>DirectI Internal Releases Repository</name>
-            <url>http://172.16.142.176:9999/nexus/content/repositories/releases</url>
+            <id>talkto.maven.releases</id>
+            <name>Talk.to Releases Repository</name>
+            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
-            <id>directi.maven.snapshots</id>
-            <name>DirectI Internal Snapshot Repository</name>
-            <url>http://172.16.142.176:9999/nexus/content/repositories/snapshots</url>
+            <id>talkto.maven.snapshots</id>
+            <name>Talk.to Snapshots Repository</name>
+            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
