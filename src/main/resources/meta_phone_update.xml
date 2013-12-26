@@ -1,0 +1,20 @@
+<iq id="{{packetId}}" from="{{serviceJid}}" to="{{meta.jid}}@meta.talk.to~mc" type="set">
+    <meta-phone-update tt-jid="{{meta.jid}}@talk.to~tt" xmlns="http://talk.to/extension#meta-notification">
+        <vCard xmlns="vcard-temp">
+            <N>
+                <FAMILY>{{meta.lastName}}</FAMILY>
+                <GIVEN>{{meta.firstName}}</GIVEN>
+                <MIDDLE/>
+            </N>
+            <PHOTO>
+                <EXTVAL>{{pictureBaseUrl}}{{meta.imageHashDefaultIfNotSet}}</EXTVAL>
+            </PHOTO>
+            <x xmlns="http://talk.to/extension">
+                <verified-mobile>{{meta.phoneVerified}}</verified-mobile>
+                <country-code>{{meta.countryCode}}</country-code>
+                <mobile>{{meta.mobile}}</mobile>
+                <version>{{meta.version}}</version>
+            </x>
+        </vCard>
+    </meta-phone-update>
+</iq>

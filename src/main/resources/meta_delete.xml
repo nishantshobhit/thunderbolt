@@ -1,0 +1,3 @@
+<iq id="PACKETID" from="SERVICEJID" to="guid@talk.to~tt" type="set">
+    <meta-delete xmlns="http://talk.to/extension#meta-notification"/>
+</iq>
