@@ -111,12 +111,12 @@
 
     <distributionManagement>
         <repository>
-            <id>talkto.maven.releases</id>
+            <id>olympus.maven.releases</id>
             <name>Talk.to Releases Repository</name>
             <url>http://ci.aws.talk.to:8081/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
-            <id>talkto.maven.snapshots</id>
+            <id>olympus.maven.snapshots</id>
             <name>Talk.to Snapshots Repository</name>
             <url>http://ci.aws.talk.to:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
