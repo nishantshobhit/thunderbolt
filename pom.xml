@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>thunderbolt</name>
-    <groupId>olympus</groupId>
+    <groupId>to.talk</groupId>
     <artifactId>thunderbolt</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
@@ -95,31 +95,5 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <repositories>
-        <repository>
-            <id>talkto.maven.central</id>
-            <name>Talk.to Central Repository</name>
-            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/central/</url>
-        </repository>
-        <repository>
-            <id>talkto.maven.releases</id>
-            <name>Talk.to Releases Repository</name>
-            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/releases/</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>olympus.maven.releases</id>
-            <name>Talk.to Releases Repository</name>
-            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>olympus.maven.snapshots</id>
-            <name>Talk.to Snapshots Repository</name>
-            <url>http://ci.aws.talk.to:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
